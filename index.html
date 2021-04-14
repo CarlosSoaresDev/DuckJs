@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    <div ngl-controller="component">
+        <section>
+            <input type="text" ngmodel="todo"><button ngl-click="add()">Add</button>
+            <p [flow]="todo"> </p>
+            <ul>
+                <li ngl-repeat="todo of todos" [flow]="todo"></li>
+
+            </ul>
+        </section>
+    </div>
+    <!-- <script src="dist/main.js"></script> -->
+    <script src="src/js/core.js">
+    </script>
+    <script src="src/js/directive.js">
+    </script>
+    <script src="src/js/main.js"></script>
+
+</body>
+
+</html>

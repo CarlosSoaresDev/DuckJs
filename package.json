@@ -1,0 +1,22 @@
+{
+    "name": "my-lib",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "gulp scripts",
+        "start": "npm run build && http-server --proxy http://localhost:8080?"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "gulp-concat": "^2.6.1",
+        "gulp-plumber": "^1.2.0",
+        "gulp-rename": "^1.4.0",
+        "gulp-uglify": "^3.0.1",
+        "http-serve": "^1.0.1"
+    }
+}
