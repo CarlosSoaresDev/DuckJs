@@ -4,26 +4,9 @@ Provider.directive('[value]', function () {
     return {
         scope: false,
         link: function (el, scope, exp) {
-            el.innerHTML = scope.$eval(exp) || '' ;
+            el.innerHTML = scope.$eval(exp) || '';
             scope.$watch(exp, function (val) {
-                el.innerHTML = val || '';
-            });
-        }
-    };
-});
-
-Provider.directive('[disable]', () => {
-    'use strict';
-    return {
-        scope: false,
-        link: function (el, scope, exp) {
-            el.classList.add('disabled')
-            scope.$watch(exp, function (val) {
-                if (val)
-                el.classList.add("disabled")                 
-                else
-                el.classList.remove("disabled")  
-                   
+                el.innerHTML = val;
             });
         }
     };
@@ -34,13 +17,13 @@ Provider.directive('[visible]', () => {
     return {
         scope: false,
         link: function (el, scope, exp) {
-            el.style.visibility = 'hidden'
+            console.log(scope.$eval(exp));
             scope.$watch(exp, function (val) {
+                console.log(val);
                 if (val)
-                el.style.visibility = 'visible'                    
+                    el.style.visibility = 'visible'
                 else
-                el.style.visibility = 'hidden'
-                   
+                    el.style.visibility = 'hidden'
             });
         }
     };
@@ -52,19 +35,6 @@ Provider.directive('(click)', () => {
         scope: false,
         link: function (el, scope, exp) {
             el.onclick = function () {
-                scope.$eval(exp);
-                scope.$digest();
-            };
-        }
-    };
-});
-
-Provider.directive('(keydown)', () => {
-    'use strict';
-    return {
-        scope: false,
-        link: function (el, scope, exp) {
-            el.onkeypress = function () {
                 scope.$eval(exp);
                 scope.$digest();
             };
@@ -148,5 +118,4 @@ Provider.directive('foreach', () => {
         }
     };
 });
-
 

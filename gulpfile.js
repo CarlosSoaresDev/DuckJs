@@ -1,22 +1,24 @@
-var gulp = require('gulp');
-var plumber = require('gulp-plumber');
-var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
-var rename = require('gulp-rename')
+const gulp = require('gulp');
+const minify = require('gulp-minify');
+const uglify = require('gulp-uglify');
+const concat = require('gulp-concat');
+const plumber = require('gulp-plumber');
+const watch = require('gulp-watch');
 
-var src_js = './src/js/*.js'
+const srcPatchFile = './src/js/*.js'
+const distPatchName = './dist'
+const distName = 'duck.js'
 
-var dist_js = './dist'
-var dist_name_js = 'main.js'
-
-gulp.task('scripts', function() {
-    return gulp.src(src_js)
-        // .pipe(plumber())
-        // .pipe(uglify())
-        .pipe(concat(dist_name_js))
-        .pipe(gulp.dest(dist_js));
+gulp.task('scripts', function () {
+    return gulp.src(srcPatchFile)
+        .pipe(concat(distName))
+        .pipe(minify())
+        .pipe(uglify())
+        .pipe(plumber())
+        .pipe(gulp.dest(distPatchName));
 });
 
-gulp.task('watching', function() {
-    gulp.watch([src_js], ['scripts']);
-})
+gulp.task('stream', function () {
+    return watch(srcPatchFile, { ignoreInitial: false })      
+        .pipe(gulp.dest(distPatchName));
+});

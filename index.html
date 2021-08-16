@@ -1,30 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>To do</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
 </head>
 
 <body>
-    <div ngl-controller="component">
+    <div component="index" style="margin-left: 300px; margin-right: 300px; margin-top: 100px;">
+        <h1 class="text-center mb-5">Lista de tarefa com 🦆 </h1>
         <section>
-            <input type="text" ngmodel="todo"><button ngl-click="add()">Add</button>
-            <p [flow]="todo"> </p>
-            <ul>
-                <li ngl-repeat="todo of todos" [flow]="todo"></li>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" (model)="task" placeholder="Escreva sua tarefa">
+                <div class="input-group-append">
+                    <button [disable]="!task" class="btn btn-outline-primary" type="button" (click)="onAddTask()">
+                        Adicionar
+                    </button>
 
-            </ul>
+                </div>
+            </div>
+            <p [value]="task"></p>
+
+            <p class="text-danger" [visible]="!task">Este Campo é requerido </p>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr foreach="toDoTask of toDoTasks" [value]="toDoTask"></tr>
+                </tbody>
+            </table>
         </section>
     </div>
-    <!-- <script src="dist/main.js"></script> -->
-    <script src="src/js/core.js">
-    </script>
-    <script src="src/js/directive.js">
-    </script>
-    <script src="src/js/main.js"></script>
-
+    <script src="dist/duck-min.js"></script>
+    <script src="index.component.js"></script>
 </body>
 
 </html>
