@@ -7,7 +7,7 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "gulp scripts",
         "dev": "gulp stream",
-        "start": "npm run build && http-server --proxy http://localhost:8080?"
+        "start": "npm run build && http-serve -p 8080 . -o http://localhost:8080/index"
     },
     "keywords": [],
     "author": "",
